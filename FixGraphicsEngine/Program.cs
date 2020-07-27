@@ -17,7 +17,7 @@ namespace FixGraphicsEngine
             string text = File.ReadAllText(fileName);
             if(text.Contains("07graphics_api::-%(|::0"))
             {
-                Barf();
+                AlreadyAuto();
             }
             if(text.Contains("07graphics_api::-%(|::1"))
             {
@@ -54,6 +54,13 @@ namespace FixGraphicsEngine
         static void Barf()
         {
             Console.WriteLine("Done! Hit any key to quit!");
+            Console.ReadKey();
+            Process.GetCurrentProcess().Kill();
+        }
+        static void AlreadyAuto()
+        {
+            Console.WriteLine("Your Graphics API is already set to auto.");
+            Console.WriteLine("Press any key to quit!");
             Console.ReadKey();
             Process.GetCurrentProcess().Kill();
         }
